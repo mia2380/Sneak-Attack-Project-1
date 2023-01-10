@@ -2,7 +2,7 @@
 
 ## Project Description/User Story: 
 
-GIVEN a user wants to adopt a cat
+GIVEN a user wants to adopt a cat or dog
 WHEN a searches for a pet on our site
 THEN they are presented with a nearby adoption with an item to purchase for said animal
 
@@ -11,7 +11,7 @@ THEN they are presented with a nearby adoption with an item to purchase for said
     -Amazon
 
 ## Wire Frame
-![WireFrame/A user clicks on different pets and available pets and products show on the screen.](./proposal_docs/images/wireframe.png)
+![WireFrame/A user clicks on different pets and available pets and products show on the screen.](./assets/images/wireframe.png)
 
 ## Task List
 
