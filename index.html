@@ -16,20 +16,18 @@
 
   <div class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
     <div class="col-12 col-md-3 bg-light p-3">
-      <h1 class="text-primary">Pinder - Find Some Tail</h1>
+      <h1 class="text-primary">Movie Mania</h1>
       <form id="search-form" class="mb-2">
-        <input id="search-input" class="form-input w-100" type="text" placeholder="Enter your zip code!">
         <select id="format-input" class="form-input w-100">
-          <option value="" disabled selected>Select the type of pet you want...</option>
-          <option value="cat">Cat</option>
+          <option value="" disabled selected>Select the movie genre</option>
+          <option value="cat"></option>
           <option value="dog">Dog</option>
           <option value="kitten">Kitten</option>
           <option value="puppy">Puppy</option>
         </select>
         <button class="btn btn-info btn-block">Search</button>
+        <button class="btn btn-info btn-block">Surprise Me!</button>
       </form>
-
-      <img src="./assets/images/cat-icon.png" alt="cat swiping on cell phone"/>
 
     <div class="col-12 col-md-9 p-3 text-light">
       <h2>Showing adoptable pets in your area <span id="result-text"></span></h2>
@@ -37,7 +35,7 @@
     </div>
 
     <div class="col-12 col-md-9 p-3 text-light">
-        <h2>What do you need for your new friend? <span id="result-text"></span></h2>
+        <h2>Where to Stream? <span id="result-text"></span></h2>
         <div id="result-content"></div>
       </div>
   </div>
