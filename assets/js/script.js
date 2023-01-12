@@ -6,7 +6,7 @@ var OMDbAPIKey = "2f57da20"
 
 
 let getMovie = function(movie) {
-var queryURL = "http://www.omdbapi.com/?apikey=a454390f&s=a&per_page=2";
+var queryURL = "http://www.omdbapi.com/?apikey=a454390f&s=batman&page=2";
 
     fetch(queryURL)
     .then(function(response) {
