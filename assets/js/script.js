@@ -1,33 +1,46 @@
-var petfinderAPIkey = "iyPla2DNJdCUystNwRaVIGWGPXflX9QGZ8CTKh7UmrsW56CTM4";
-var petfinderSecretKey = "DnqfHL61DGSaaEJMYeJVnJAoeSKWIVtozWEScI44";
-var zip = '27610';
+var watchModeAPIKey = "cyPS2JJNj27Fr0x0pSjOTODxN6dTVevI4RLztRvb";
+// watch key url"https://api.watchmode.com/v1/sources/?apiKey=cyPS2JJNj27Fr0x0pSjOTODxN6dTVevI4RLztRvb";
+var OMDbAPIKey = "2f57da20"
 
-var apiUrl = 'http://api.petfinder.com/pet.getRandom?key=' + petfinderAPIkey + '&animal=cat&location=' + zip + '&output=basic&format=json&callback=?';
 
-/*
-    fetch(apiUrl).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (data) {
-                //var lon = data.coord.lon;
-                //var lat = data.coord.lat;
+
+
+let getMovie = function(movie) {
+var queryURL = "http://www.omdbapi.com/?apikey=a454390f&s=a&per_page=2";
+
+    fetch(queryURL)
+    .then(function(response) {
+        if(response.ok) {
+            console.log(response);
+            response.json().then(function(data) {
                 console.log(data);
-            })
+			// let genre = data.Genre;
+			// console.log(genre);
+
+
+            });
+        } else {
+            alert('Error: ' + response.statusText);
         }
     });
-    */
+};
+getMovie();
 
-    var url = 'http://api.petfinder.com/pet.getRandom?key=' + petfinderAPIkey + '&animal=cat&location=' + zip + '&output=basic&format=json&callback=?';
-		
-	// Within $.ajax{...} is where we fill out our query 
+let getStream = function() {
+	let streamURL = "https://api.watchmode.com/v1/sources/?apiKey=" + watchModeAPIKey;
 
-	$.ajax({
-			url: url,
-			jsonp: "callback",
-			dataType: "jsonp",
-			data: {
-				key: petfinderAPIkey,
-				animal: 'cat',
-				location: zip,
-				output: 'basic',
-				format: 'json'
-			},})
+    fetch(streamURL)
+    .then(function(response) {
+        if(response.ok) {
+            console.log(response);
+            response.json().then(function(data) {
+                console.log(data);
+
+            });
+        } else {
+            alert('Error: ' + response.statusText);
+        }
+    });
+};
+getStream();
+
