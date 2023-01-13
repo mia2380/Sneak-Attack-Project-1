@@ -53,6 +53,14 @@ let getStream = function(imdbID) {
             console.log(response);
             response.json().then(function(data) {
                 console.log(data);
+                var streamName = data[0].name;
+                var streamPrice = data[0].price;
+                var streamType = data[0].type;
+                var streamUrl = data[0].web_url;
+                document.getElementById("sname").innerHTML="Streaming Service: "+ streamName;
+                document.getElementById("sprice").innerHTML="Price: $"+ streamPrice;
+                document.getElementById("stype").innerHTML="Rent or Buy: "+ streamType;
+                document.getElementById("surl").innerHTML="Streaming Website: "+ streamUrl;
 
             });
         } else {
