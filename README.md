@@ -16,19 +16,7 @@ THEN they are presented with a nearby adoption with an item to purchase for said
 ## Task List
 
 ## HTML
-    - header
-    -nav bar?
-    -side bar
-    -body
-    -footer
-    - add div containers from the wire frame
-    -name classes/ids
-    -link CSS style sheet
-    -link javascript sheet
-    -add jquery links 
-    -add api server links
-    -choose which format to use for flexibility - flex box/grid/ect
-    - do we want links to open in new browswer
+    - choose what movies go into each category
 
 ## CSS
     -what font do we want to use?
@@ -38,8 +26,7 @@ THEN they are presented with a nearby adoption with an item to purchase for said
 
 
 ## JavaScript
-    - click events for different type of pets
-    - click events for amazon products
+    - choose what movies go into each category
     - add in some loops
     - and if statements
     - add in search parameter for location

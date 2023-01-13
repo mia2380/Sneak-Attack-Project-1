@@ -17,26 +17,29 @@
   <div class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
     <div class="col-12 col-md-3 bg-light p-3">
       <h1 class="text-primary">Movie Mania</h1>
-      <form id="search-form" class="mb-2">
-        <select id="format-input" class="form-input w-100">
-          <option value="" disabled selected>Select the movie genre</option>
-          <option value="cat"></option>
-          <option value="dog">Dog</option>
-          <option value="kitten">Kitten</option>
-          <option value="puppy">Puppy</option>
-        </select>
-        <button class="btn btn-info btn-block">Search</button>
-        <button class="btn btn-info btn-block">Surprise Me!</button>
-      </form>
+      <section id="search-section" class="mb-2">
+        <button class="btn btn-info btn-block" id = "book-movies">Movies you can watch instead of read</button>
+        <button class="btn btn-info btn-block" id = "sad-movies">Movies that will make you cry</button>
+        <button class="btn btn-info btn-block" id = "scary-movies">Movies that will make you sleep with the lights on</button>
+        <button class="btn btn-info btn-block" id = "comedy-movies">Movies that will make you laugh</button>
+        <button class="btn btn-info btn-block" id = "romance-movies">Movies that will make you fall in love</button>
+        <button class="btn btn-info btn-block" id = "action-movies">Movies that will make you want to do parkour and/or punch people</button>
+      </section>
+  </div>
 
+  <div class = "flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
     <div class="col-12 col-md-9 p-3 text-light">
-      <h2>Showing adoptable pets in your area <span id="result-text"></span></h2>
-      <div id="result-content"></div>
+      <h2>Showing a random movie from your selected genre: <span id="result-text"></span></h2>
+      <div id="result-content">
+        <ul id = "ul-movie"></ul>
+      </div>
     </div>
 
     <div class="col-12 col-md-9 p-3 text-light">
-        <h2>Where to Stream? <span id="result-text"></span></h2>
-        <div id="result-content"></div>
+        <h2>Where to Stream? <span id="result-stream"></span></h2>
+        <div id="result-stream-content">
+          <ul id = "ul-stream"></ul>
+        </div>
       </div>
   </div>
 
