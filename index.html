@@ -4,15 +4,31 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pinder | Find Some Tail</title>
+  <title>Movie-Mania</title>
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
     rel="stylesheet" />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-
-    </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
 <body>
+<<<<<<< HEAD
+  <aside>
+    <div
+      class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
+      <div class="col-12 col-md-3 bg-light p-3">
+        <h1 class="text-primary">Movie Mania</h1>
+        <section id="search-section" class="mb-2">
+          <button class="btn btn-info btn-block" id="book-movies">Movies you can watch instead of read</button>
+          <button class="btn btn-info btn-block" id="sad-movies">Movies that will make you cry</button>
+          <button class="btn btn-info btn-block" id="scary-movies">Movies that will make you sleep with the lights
+            on</button>
+          <button class="btn btn-info btn-block" id="comedy-movies">Movies that will make you laugh</button>
+          <button class="btn btn-info btn-block" id="romance-movies">Movies that will make you fall in love</button>
+          <button class="btn btn-info btn-block" id="action-movies">Movies that will make you want to do parkour and/or
+            punch people</button>
+        </section>
+=======
 
   <div class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
     <div class="col-12 col-md-3 bg-light p-3">
@@ -46,9 +62,63 @@
 
           
         </div>
+>>>>>>> refs/remotes/origin/main
       </div>
-  </div>
 
+      <div
+        class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
+        <div class="col-12 col-md-9 p-3 text-light">
+          <h2>Showing a random movie from your selected genre: <span id="result-text"></span></h2>
+          <div id="result-content">
+            <ul id="ul-movie"></ul>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-9 p-3 text-light">
+          <h2>Where to Stream? <span id="result-stream"></span></h2>
+          <div id="result-stream-content">
+
+            <p id="sname"></p>
+            <p id="sprice"></p>
+            <p id="stype"></p>
+            <p id="surl"></p>
+
+          </div>
+        </div>
+      </div>
+  </aside>
+
+
+  <main>
+    <!-- search container -->
+    <div class="search-container">
+      <div class="search-element">
+        <h3>Search Movie:</h3>
+        <input type="text" class="form-control" placeholder="Search Movie Title ..." id="movie-search-box"
+          onkeyup="findMovies()" onclick="findMovies()">
+
+        <div class="search-list" id="search-list">
+          <!-- list here -->
+          <!-- <div class = "search-list-item"> -->
+        </div>
+      </div>
+    </div>
+    <!-- end of search container -->
+
+    <!-- result container -->
+    <div class="container">
+      <div class="result-container">
+        <div class="result-grid" id="result-grid">
+          <!-- movie information here -->
+          <!-- <div class = "movie-poster"> -->
+        </div>
+      </div>
+    </div>
+    <!-- end of result container -->
+  </main>
+
+  <script src="https://code.jquery.com/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <script src="./assets/js/script.js"></script>
 </body>
