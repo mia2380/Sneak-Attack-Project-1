@@ -1,33 +1,165 @@
-var petfinderAPIkey = "iyPla2DNJdCUystNwRaVIGWGPXflX9QGZ8CTKh7UmrsW56CTM4";
-var petfinderSecretKey = "DnqfHL61DGSaaEJMYeJVnJAoeSKWIVtozWEScI44";
-var zip = '27610';
+var watchModeAPIKey = "cyPS2JJNj27Fr0x0pSjOTODxN6dTVevI4RLztRvb";
+var OMDbAPIKey = "2f57da20";
+var buttonsEl = document.querySelector('#search-section');
+var bookMoviesEl = document.querySelector('#book-movies');
+var sadMoviesEl = document.querySelector('#sad-movies');
+var scaryMoviesEl = document.querySelector('#scary-movies');
+var comedyMoviesEl = document.querySelector('#comedy-movies');
+var romanceMoviesEl = document.querySelector('#romance-movies');
+var actionMoviesEl = document.querySelector('#action-movies');
+var movieUl = document.querySelector('#ul-movie');
+var streamUl = document.querySelector('#ul-stream');
 
-var apiUrl = 'http://api.petfinder.com/pet.getRandom?key=' + petfinderAPIkey + '&animal=cat&location=' + zip + '&output=basic&format=json&callback=?';
+var bookMovies = ['Dune', 'Harry Potter'];
 
-/*
-    fetch(apiUrl).then(function (response) {
-        if (response.ok) {
-            response.json().then(function (data) {
-                //var lon = data.coord.lon;
-                //var lat = data.coord.lat;
-                console.log(data);
-            })
-        }
-    });
-    */
+var buttonClickHandler = function (event) {
+	var clickedButton = event.target.getAttribute('id');
+	console.log(clickedButton);
 
-    var url = 'http://api.petfinder.com/pet.getRandom?key=' + petfinderAPIkey + '&animal=cat&location=' + zip + '&output=basic&format=json&callback=?';
-		
-	// Within $.ajax{...} is where we fill out our query 
+	if (clickedButton = "book-movie") {
+		var randomBookMovie = bookMovies[Math.floor(Math.random() * bookMovies.length)];
+		console.log(randomBookMovie);
+		getMovie(randomBookMovie);
+	}
 
-	$.ajax({
-			url: url,
-			jsonp: "callback",
-			dataType: "jsonp",
-			data: {
-				key: petfinderAPIkey,
-				animal: 'cat',
-				location: zip,
-				output: 'basic',
-				format: 'json'
-			},})
+}
+
+let getMovie = function (movie) {
+	var queryURL = "http://www.omdbapi.com/?apikey=a454390f&page=2&type=movie&t=" + movie;
+
+	fetch(queryURL)
+		.then(function (response) {
+			if (response.ok) {
+				console.log(response);
+				response.json().then(function (data) {
+					console.log(data);
+					var imdbID = data.imdbID;
+					console.log(imdbID);
+					getStream(imdbID);
+				});
+			} else {
+				alert('Error: ' + response.statusText);
+			}
+		});
+};
+
+let getStream = function (imdbID) {
+	console.log(imdbID);
+	let streamURL = "https://api.watchmode.com/v1/title/" + imdbID + "/sources/?apiKey=" + watchModeAPIKey;
+
+	fetch(streamURL)
+		.then(function (response) {
+			if (response.ok) {
+				console.log(response);
+				response.json().then(function (data) {
+					console.log(data);
+					var streamName = data[0].name;
+					var streamPrice = data[0].price;
+					var streamType = data[0].type;
+					var streamUrl = data[0].web_url;
+					document.getElementById("sname").innerHTML = "Streaming Service: " + streamName;
+					document.getElementById("sprice").innerHTML = "Price: $" + streamPrice;
+					document.getElementById("stype").innerHTML = "Rent or Buy: " + streamType;
+					document.getElementById("surl").innerHTML = "Streaming Website: " + streamUrl;
+
+				});
+			} else {
+				alert('Error: ' + response.statusText);
+			}
+		});
+};
+//event listeners
+buttonsEl.addEventListener("click", buttonClickHandler);
+
+// geting movie details from API through the search box
+const movieSearchBox = document.getElementById('movie-search-box');
+const searchList = document.getElementById('search-list');
+const resultGrid = document.getElementById('result-grid');
+
+// load movies from API
+async function loadMovies(searchTerm) {
+	const URL = `https://omdbapi.com/?s=${searchTerm}&page=1&apikey=fc1fef96`;
+	const res = await fetch(`${URL}`);
+	const data = await res.json();
+	// console.log(data.Search);
+	if (data.Response == "True") displayMovieList(data.Search);
+}
+
+function findMovies() {
+	let searchTerm = (movieSearchBox.value).trim();
+	if (searchTerm.length > 0) {
+		searchList.classList.remove('hide-search-list');
+		loadMovies(searchTerm);
+	} else {
+		searchList.classList.add('hide-search-list');
+	}
+}
+
+function displayMovieList(movies) {
+	searchList.innerHTML = "";
+	for (let idx = 0; idx < movies.length; idx++) {
+		let movieListItem = document.createElement('div');
+		movieListItem.dataset.id = movies[idx].imdbID; // setting movie id in  data-id
+		movieListItem.classList.add('search-list-item');
+		if (movies[idx].Poster != "N/A")
+			moviePoster = movies[idx].Poster;
+		else
+			moviePoster = "image_not_found.png";
+
+		movieListItem.innerHTML = `
+        <div class = "search-item-thumbnail">
+            <img src = "${moviePoster}">
+        </div>
+        <div class = "search-item-info">
+            <h3>${movies[idx].Title}</h3>
+            <p>${movies[idx].Year}</p>
+        </div>
+        `;
+		searchList.appendChild(movieListItem);
+	}
+	loadMovieDetails();
+}
+
+function loadMovieDetails() {
+	const searchListMovies = searchList.querySelectorAll('.search-list-item');
+	searchListMovies.forEach(movie => {
+		movie.addEventListener('click', async () => {
+			// console.log(movie.dataset.id);
+			searchList.classList.add('hide-search-list');
+			movieSearchBox.value = "";
+			const result = await fetch(`http://www.omdbapi.com/?i=${movie.dataset.id}&apikey=fc1fef96`);
+			const movieDetails = await result.json();
+			// console.log(movieDetails);
+			displayMovieDetails(movieDetails);
+		});
+	});
+}
+
+function displayMovieDetails(details) {
+	resultGrid.innerHTML = `
+    <div class = "movie-poster">
+        <img src = "${(details.Poster != "N/A") ? details.Poster : "image_not_found.png"}" alt = "movie poster">
+    </div>
+    <div class = "movie-info">
+        <h3 class = "movie-title">${details.Title}</h3>
+        <ul class = "movie-misc-info">
+            <li class = "year">Year: ${details.Year}</li>
+            <li class = "rated">Ratings: ${details.Rated}</li>
+            <li class = "released">Released: ${details.Released}</li>
+        </ul>
+        <p class = "genre"><b>Genre:</b> ${details.Genre}</p>
+        <p class = "writer"><b>Writer:</b> ${details.Writer}</p>
+        <p class = "actors"><b>Actors: </b>${details.Actors}</p>
+        <p class = "plot"><b>Plot:</b> ${details.Plot}</p>
+        <p class = "language"><b>Language:</b> ${details.Language}</p>
+        <p class = "awards"><b><i class = "fas fa-award"></i></b> ${details.Awards}</p>
+    </div>
+    `;
+}
+
+
+window.addEventListener('click', (event) => {
+	if (event.target.className != "form-control") {
+		searchList.classList.add('hide-search-list');
+	}
+});
