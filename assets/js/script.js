@@ -272,7 +272,7 @@ function loadMovieDetails() {
     movie.addEventListener("click", async () => {
       // console.log(movie.dataset.id);
       searchList.classList.add("hide-search-list");
-      movieSearchBox.value = "";
+      movieSearchBox.value = "";wrapper
       const result = await fetch(
         `http://www.omdbapi.com/?i=${movie.dataset.id}&apikey=fc1fef96`
       );
@@ -302,9 +302,7 @@ function displayMovieDetails(details) {
         <p class = "actors"><b>Actors: </b>${details.Actors}</p>
         <p class = "plot"><b>Plot:</b> ${details.Plot}</p>
         <p class = "language"><b>Language:</b> ${details.Language}</p>
-        <p class = "awards"><b><i class = "fas fa-award"></i></b> ${
-          details.Awards
-        }</p>
+        <p class = "awards"><b><i class = "fas fa-award"></i></b>${details.Awards}</p>
     </div>
     `;
 }
