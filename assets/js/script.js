@@ -22,45 +22,45 @@ var buttonClickHandler = function (event) {
 	var clickedButton = event.target.getAttribute('id');
 	console.log(clickedButton);
 
-	if (clickedButton = "book-movie") {
+	if (clickedButton === "book-movies") {
 		var randomBookMovie = bookMovies[Math.floor(Math.random() * bookMovies.length)];
 		console.log(randomBookMovie);
 		getMovie(randomBookMovie);
 	}
 
-	else if (clickedButton = "sad-movies") {
+	else if (clickedButton === "sad-movies") {
 		var randomSadMovie = sadMovies[Math.floor(Math.random() * sadMovies.length)];
 		console.log(randomSadMovie);
 		getMovie(randomSadMovie);
 	}
 
-	else if (clickedButton = "scary-movies") {
+	else if (clickedButton === "scary-movies") {
 		var randomScaryMovie = scaryMovies[Math.floor(Math.random() * scaryMovies.length)];
 		console.log(randomScaryMovie);
 		getMovie(randomScaryMovie);
 	}
 
-	else if (clickedButton = "comedy-movies") {
+	else if (clickedButton === "comedy-movies") {
 		var randomComedyMovie = comedyMovies[Math.floor(Math.random() * comedyMovies.length)];
 		console.log(randomComedyMovie);
 		getMovie(randomComedyMovie);
 	}
 
-	else if (clickedButton = "romance-movies") {
+	else if (clickedButton === "romance-movies") {
 		var randomRomanceMovie = romanceMovies[Math.floor(Math.random() * romanceMovies.length)];
 		console.log(randomRomanceMovie);
 		getMovie(randomRomanceMovie);
 	}
 
-	else if (clickedButton = "action-movies") {
+	else if (clickedButton === "action-movies") {
 		var randomActionMovie = actionMovies[Math.floor(Math.random() * actionMovies.length)];
 		console.log(randomActionMovie);
 		getMovie(randomActionMovie);
 	}
-
-}
+};
 
 let getMovie = function (movie) {
+	console.log(movie);
 	var queryURL = "http://www.omdbapi.com/?apikey=a454390f&page=2&type=movie&t=" + movie;
 
 	fetch(queryURL)
