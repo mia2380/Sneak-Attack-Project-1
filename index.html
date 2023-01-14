@@ -1,95 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Movie-Mania</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="./assets/css/style.css" />
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Mania|Netflix & Chill, or Hulu and Hang?</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
 
-<body>
-<<<<<<< HEAD
-  <aside>
-    <div
-      class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
-      <div class="col-12 col-md-3 bg-light p-3">
-        <h1 class="text-primary">Movie Mania</h1>
-        <section id="search-section" class="mb-2">
-          <button class="btn btn-info btn-block" id="book-movies">Movies you can watch instead of read</button>
-          <button class="btn btn-info btn-block" id="sad-movies">Movies that will make you cry</button>
-          <button class="btn btn-info btn-block" id="scary-movies">Movies that will make you sleep with the lights
-            on</button>
-          <button class="btn btn-info btn-block" id="comedy-movies">Movies that will make you laugh</button>
-          <button class="btn btn-info btn-block" id="romance-movies">Movies that will make you fall in love</button>
-          <button class="btn btn-info btn-block" id="action-movies">Movies that will make you want to do parkour and/or
-            punch people</button>
-        </section>
-=======
-
-  <div class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
-    <div class="col-12 col-md-3 bg-light p-3">
-      <h1 class="text-primary">Movie Mania</h1>
-      <section id="search-section" class="mb-2">
-        <button class="btn btn-info btn-block" id = "book-movies">Movies you can watch instead of read</button>
-        <button class="btn btn-info btn-block" id = "sad-movies">Movies that will make you cry</button>
-        <button class="btn btn-info btn-block" id = "scary-movies">Movies that will make you sleep with the lights on</button>
-        <button class="btn btn-info btn-block" id = "comedy-movies">Movies that will make you laugh</button>
-        <button class="btn btn-info btn-block" id = "romance-movies">Movies that will make you fall in love</button>
-        <button class="btn btn-info btn-block" id = "action-movies">Movies that will make you want to do parkour and/or punch people</button>
-      </section>
-  </div>
-
-  <div class = "flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
-    <div class="col-12 col-md-9 p-3 text-light">
-      <h2>Showing a random movie from your selected genre: <span id="result-text"></span></h2>
-      <div id="result-content">
-        <ul id = "ul-movie"></ul>
-      </div>
-    </div>
-
-    <div class="col-12 col-md-9 p-3 text-light">
-        <h2>Where to Stream? <span id="result-stream"></span></h2>
-        <div id="result-stream-content">
-          
-            <p id="sname"></p>
-            <p id="sprice"></p>
-            <p id="stype"></p>
-            <p id="surl"></p>
-
-          
-        </div>
->>>>>>> refs/remotes/origin/main
-      </div>
-
-      <div
-        class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
-        <div class="col-12 col-md-9 p-3 text-light">
-          <h2>Showing a random movie from your selected genre: <span id="result-text"></span></h2>
-          <div id="result-content">
-            <ul id="ul-movie"></ul>
-          </div>
-        </div>
-
-        <div class="col-12 col-md-9 p-3 text-light">
-          <h2>Where to Stream? <span id="result-stream"></span></h2>
-          <div id="result-stream-content">
-
-            <p id="sname"></p>
-            <p id="sprice"></p>
-            <p id="stype"></p>
-            <p id="surl"></p>
-
-          </div>
-        </div>
-      </div>
-  </aside>
-
-
+  <body>
+    <header id="wrapper" class="center-aligned">
+      <img src="./assets/images/blackplaceholder.PNG" alt="placeholder"  height="100px" width="1200px">
+        <h1 class="movie-title">Movie Mania</h1>
+    </header>
   <main>
+    <aside class="side-container">
+      <div class="side">
+        <section id="search-section" class="mb-2">
+          <h2>Pick which movie you are in the mood for:</h2>
+          <button class="btn" id = "book-movies">Movies you can watch instead of read</button>
+          <button class="btn" id = "sad-movies">Movies that will make you cry</button>
+          <button class="btn" id = "scary-movies">Movies that will make you sleep with the lights on</button>
+          <button class="btn" id = "comedy-movies">Movies that will make you laugh</button>
+          <button class="btn" id = "romance-movies">Movies that will make you fall in love</button>
+          <button class="btn" id = "action-movies">Movies that will make you want to do parkour and/or punch people</button>
+        </section>
+      </div id="doggie">
+      <img src="./assets/images/movie-theater-dog.PNG" height="350px"/>
+    </aside>
+    <section class = "results-container">
+      <div class = "movie-results">
+      <h2>Showing a random movie from your selected genre: <span id="result-text"></span></h2>
+        <div id="result-content">
+          <ul id = "ul-movie"></ul>
+        </div>
+      </div>
+    <div class="stream-results" id="stream-container">
+      <h2>Where to Stream: <span id="result-stream"></span></h2>
+        <div id="result-stream-content">
+          <p id="sname"></p>
+          <p id="sprice"></p>
+          <p id="stype"></p>
+          <p id="surl"></p>
+        </div>
+    </div>
     <!-- search container -->
     <div class="search-container">
       <div class="search-element">
@@ -115,8 +70,9 @@
       </div>
     </div>
     <!-- end of result container -->
+    </section>
   </main>
-
+  <footer></footer>
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
