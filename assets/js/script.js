@@ -7,9 +7,9 @@ var scaryMoviesEl = document.querySelector('#scary-movies');
 var comedyMoviesEl = document.querySelector('#comedy-movies');
 var romanceMoviesEl = document.querySelector('#romance-movies');
 var actionMoviesEl = document.querySelector('#action-movies');
-var movieUl = document.querySelector('#ul-movie');
 var streamUl = document.querySelector('#ul-stream');
-var streamResultsEl = document.querySelector('#stream-container')
+var streamResultsEl = document.querySelector('#stream-container');
+var movieResultsEl = document.querySelector('#result-content');
 
 var bookMovies = ['Dune', 'Harry Potter'];
 
@@ -37,6 +37,30 @@ let getMovie = function (movie) {
 					var imdbID = data.imdbID;
 					console.log(imdbID);
 					getStream(imdbID);
+
+					let title = data.Title;
+					let year = data.Year;
+					let rated = data.Rated;
+					let released = data.Released;
+					let actors = data.Actors;
+					let genre = data.Genre;
+					let language = data.Language;
+					let plot = data.Plot;
+					let poster = data.Poster;
+
+					document.getElementById("movieTitle").innerHTML = `${title}`;
+					document.getElementById("moviePoster").innerHTML = `img src=${poster}`;
+					document.getElementById("movieYear").innerHTML = `Year: ${year}`;
+					document.getElementById("movieRated").innerHTML = `Rated: ${rated}`;
+					document.getElementById("movieReleased").innerHTML = `Released: ${released}`;
+					document.getElementById("movieActors").innerHTML = `Actors: ${actors}`;
+					document.getElementById("movieGenre").innerHTML = `Genre: ${genre}`;
+					document.getElementById("movieLanguage").innerHTML = `Language: ${language}`;
+					document.getElementById("moviePlot").innerHTML = `Plot: ${plot}`;
+					movieResultsEl.className="show-results";
+					
+
+
 				});
 			} else {
 				alert('Error: ' + response.statusText);
