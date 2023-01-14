@@ -11,7 +11,12 @@ var streamUl = document.querySelector('#ul-stream');
 var streamResultsEl = document.querySelector('#stream-container');
 var movieResultsEl = document.querySelector('#result-content');
 
-var bookMovies = ['Dune', 'Harry Potter'];
+var bookMovies = ['Dune', 'Harry Potter', 'Pride & Prejudice', 'Twilight', 'Lord of the Rings','Holes','The Hunger Games','To Kill a Mockingbird','The Godfather','Forrest Gump', 'The Green Mile','The Princess Bride'];
+var sadMovies = ['The Fault In Our Stars','Marley and Me','Titanic','The Boy in the Striped Pajamas','Me Before You','My Girl','Stepmom','The Pursuit of Happyness','I Am Legend','Remember The Titans','Radio'];
+var scaryMovies = ['The Conjuring','House of Wax','The Grudge','It','Thirteen Ghosts','Texas Chainsaw Massacre','Arachnaphobia','The Shining','Hellraiser','The Skeleton Key'];
+var comedyMovies = ['Step Brothers','Bad Daddy','Superbad','Mean Girls','Bridesmaids','White Chicks','Bad Grandpa','Dodgeball','Zoolander','The Other Guys','Sausage Party','Office Space','Bad Teacher','Due Date'];
+var romanceMovies = ['The Notebook','Pride & Prejudice','Brokeback Mountain','Where The Crawdads Sing','Titanic','Wedding Crashers','Dirty Dancing','Grease','Pretty Woman','Along Came Polly','Fifty Shades of Gray','The Spectacular Now','Beauty and the Beast'];
+var actionMovies = ['Armageddon','Transformers','The Expendables','The Incredibles','Thor','The Batman','Goldfinger','Avengers','Pulp Fiction','John Wick','Inception','The Glass Onion','Heat'];
 
 var buttonClickHandler = function (event) {
 	var clickedButton = event.target.getAttribute('id');
@@ -21,6 +26,36 @@ var buttonClickHandler = function (event) {
 		var randomBookMovie = bookMovies[Math.floor(Math.random() * bookMovies.length)];
 		console.log(randomBookMovie);
 		getMovie(randomBookMovie);
+	}
+
+	else if (clickedButton = "sad-movies") {
+		var randomSadMovie = sadMovies[Math.floor(Math.random() * sadMovies.length)];
+		console.log(randomSadMovie);
+		getMovie(randomSadMovie);
+	}
+
+	else if (clickedButton = "scary-movies") {
+		var randomScaryMovie = scaryMovies[Math.floor(Math.random() * scaryMovies.length)];
+		console.log(randomScaryMovie);
+		getMovie(randomScaryMovie);
+	}
+
+	else if (clickedButton = "comedy-movies") {
+		var randomComedyMovie = comedyMovies[Math.floor(Math.random() * comedyMovies.length)];
+		console.log(randomComedyMovie);
+		getMovie(randomComedyMovie);
+	}
+
+	else if (clickedButton = "romance-movies") {
+		var randomRomanceMovie = romanceMovies[Math.floor(Math.random() * romanceMovies.length)];
+		console.log(randomRomanceMovie);
+		getMovie(randomRomanceMovie);
+	}
+
+	else if (clickedButton = "action-movies") {
+		var randomActionMovie = actionMovies[Math.floor(Math.random() * actionMovies.length)];
+		console.log(randomActionMovie);
+		getMovie(randomActionMovie);
 	}
 
 }
@@ -49,7 +84,7 @@ let getMovie = function (movie) {
 					let poster = data.Poster;
 
 					document.getElementById("movieTitle").innerHTML = `${title}`;
-					document.getElementById("moviePoster").innerHTML = `img src=${poster}`;
+					document.getElementById("moviePoster").innerHTML = `<img src=${poster}>`;
 					document.getElementById("movieYear").innerHTML = `Year: ${year}`;
 					document.getElementById("movieRated").innerHTML = `Rated: ${rated}`;
 					document.getElementById("movieReleased").innerHTML = `Released: ${released}`;
