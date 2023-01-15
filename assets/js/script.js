@@ -15,7 +15,6 @@ const resultGrid = document.getElementById("result-grid");
 var bookMovies = [
 	"Dune",
 	"Harry Potter",
-	"Pride & Prejudice",
 	"Twilight",
 	"Lord of the Rings",
 	"Holes",

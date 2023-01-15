@@ -264,6 +264,7 @@ footer {
   font-size: 2rem;
   color: var(--yellow-color);
   padding-top: 20px;
+  padding-right: 20px;
 }
 
 .result-container {
