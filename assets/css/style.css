@@ -103,13 +103,6 @@ section {
   padding: 20px;
 }
 
-/* .side-container .results-container {
-  max-width: 800px;
-  display: grid;
-  grid-template-columns: 200px 200px 200px;
-  background: var(--darkgray);
-} */
-
 .movie-results h2 {
   color: white;
   padding-bottom: 20px;
@@ -142,7 +135,12 @@ section {
   transform: translate(-1px, -1px);
 }
 
-li {
+.btn:hover {
+  background-color: var(--red);
+  font-weight: bold;
+}
+
+.movie-history li {
   background-color: var(--darkred);
   color: white;
   font-size: 1.3rem;
@@ -158,7 +156,7 @@ li {
   transform: translate(-1px, -1px);
 }
 
-.btn:hover {
+.movie-history li:hover {
   background-color: var(--red);
   font-weight: bold;
 }
@@ -304,6 +302,12 @@ footer {
   color: white;
   padding-top: 3rem;
   background-color: var(--darkgray);
+}
+
+/* Stream Results */
+.show-results span {
+  font-weight: bold;
+  color: var(--yellow-color);
 }
 
 /* thumbnail */
