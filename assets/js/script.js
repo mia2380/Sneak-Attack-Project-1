@@ -173,9 +173,14 @@ let getMovie = function (movie) {
 		`;
 
     });
-    } else {
-    alert("Error: " + response.statusText);
-    }
+    } else  {
+				let modal = document.getElementById("errorModal");
+		let errorModalText = document.getElementById("errorModalText");
+		if(errorModalText){
+			errorModalText.textContent = "Error, please try again." + response.statusText;
+			modal.style.display = "block";
+		}
+	}
 	});
 };
 
@@ -200,10 +205,15 @@ let getStream = function (imdbID) {
         document.getElementById("surl").innerHTML = "Streaming Website: " + streamUrl;
         document.getElementById("surl").innerHTML = `Streaming Website:  <a href=${streamUrl}>${streamUrl}</a>`;
         streamResultsEl.className = "show-results";
-	});
+});
     } else {
-    alert("Error: " + response.statusText);
-    }
+			let modal = document.getElementById("errorModal");
+  let errorModalText = document.getElementById("errorModalText");
+  if(errorModalText){
+    errorModalText.textContent = "Error, please try again." + response.statusText;
+    modal.style.display = "block";
+  }
+}
 	});
 };
 
@@ -300,6 +310,12 @@ function displayMovieDetails(details) {
     `;
 
 }
+
+let closeModal = document.getElementsByClassName("close")[0];
+closeModal.onclick = function() {
+    let modal = document.getElementById("errorModal");
+    modal.style.display = "none";
+};
 
 window.addEventListener("click", (event) => {
 	if (event.target.className != "form-control") {
