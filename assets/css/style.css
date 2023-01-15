@@ -142,6 +142,22 @@ section {
   transform: translate(-1px, -1px);
 }
 
+li {
+  background-color: var(--darkred);
+  color: white;
+  font-size: 1.3rem;
+  text-decoration: none;
+  padding: 6px 5px;
+  width: 100%;
+  display: block;
+  margin: 15px 0;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  box-shadow: 3px 3px var(--dark);
+  transform: translate(-1px, -1px);
+}
+
 .btn:hover {
   background-color: var(--red);
   font-weight: bold;

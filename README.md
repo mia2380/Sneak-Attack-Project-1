@@ -1,13 +1,13 @@
 # Movie Mania
 
 ## To Do & Bug Fixes
-1. change alerts to modals (Taylor)
-2. Add local storage (Taylor)
-3. Price coming back as null - need to write a rule so it doesn't (Taylor)
-4. need to add the getStream() function to work with the movie search (Taylor)
+1. change alerts to modals (Taylor - outstanding, need help)
+2. Add local storage (Taylor - partially done, need Brenda's help)
+3. Price coming back as null - need to write a rule so it doesn't (Taylor - done)
+4. need to add the getStream() function to work with the movie search (Taylor - done)
 5. Need to format the results from the streaming (Erin will do once the APIs call again)
 6. Awards icons not showing (Brenda! Help!!!)
-7. Double check spelling for Romance and Action movies (rest have been done) (Taylor)
+7. Double check spelling for Romance and Action movies (rest have been done) (Taylor - done)
 8. update readme with new project info (We can work as a group on Wednesday)
 
 

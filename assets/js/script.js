@@ -1,16 +1,18 @@
-var watchModeAPIKey = "kz5MfbHhvGeO63uJKs1zv4Rmnsc1ZhxUnaXubqci";
-var OMDbAPIKey = "2f57da20";
-var buttonsEl = document.querySelector("#search-section");
-var bookMoviesEl = document.querySelector("#book-movies");
-var sadMoviesEl = document.querySelector("#sad-movies");
-var scaryMoviesEl = document.querySelector("#scary-movies");
-var comedyMoviesEl = document.querySelector("#comedy-movies");
-var romanceMoviesEl = document.querySelector("#romance-movies");
-var actionMoviesEl = document.querySelector("#action-movies");
-var streamUl = document.querySelector("#ul-stream");
-var streamResultsEl = document.querySelector("#stream-container");
-var movieResultsEl = document.querySelector("#result-content");
+const watchModeAPIKey = "kz5MfbHhvGeO63uJKs1zv4Rmnsc1ZhxUnaXubqci";
+const OMDbAPIKey = "2f57da20";
+const buttonsEl = document.querySelector("#search-section");
+const bookMoviesEl = document.querySelector("#book-movies");
+const sadMoviesEl = document.querySelector("#sad-movies");
+const scaryMoviesEl = document.querySelector("#scary-movies");
+const comedyMoviesEl = document.querySelector("#comedy-movies");
+const romanceMoviesEl = document.querySelector("#romance-movies");
+const actionMoviesEl = document.querySelector("#action-movies");
+const streamUl = document.querySelector("#ul-stream");
+const streamResultsEl = document.querySelector("#stream-container");
+const movieResultsEl = document.querySelector("#result-content");
 const resultGrid = document.getElementById("result-grid");
+const searchHistoryEl = document.getElementById("search-history-header");
+const searchHistoryList = document.querySelector('#show-movie');
 
 var bookMovies = [
 	"Dune",
@@ -90,38 +92,52 @@ var actionMovies = [
 	"Thor",
 	"The Batman",
 	"Goldfinger",
-	"Avengers",
+	"The Avengers",
 	"Pulp Fiction",
 	"John Wick",
 	"Inception",
-	"The Glass Onion",
+	"Glass Onion: A Knives Out Mystery",
 	"Heat",
 ];
 
-var buttonClickHandler = function (event) {
+//generate random movie from array based on genre user selected
+let buttonClickHandler = function (event) {
 	var clickedButton = event.target.getAttribute("id");
-	console.log(clickedButton);
 
 	if (clickedButton === "book-movies") {
-		var randomBookMovie = bookMovies[Math.floor(Math.random() * bookMovies.length)];
-		getMovie(randomBookMovie);
+		var randomMovie = bookMovies[Math.floor(Math.random() * bookMovies.length)];
 	} else if (clickedButton === "sad-movies") {
-		var randomSadMovie = sadMovies[Math.floor(Math.random() * sadMovies.length)];
-		getMovie(randomSadMovie);
+		var randomMovie = sadMovies[Math.floor(Math.random() * sadMovies.length)];
 	} else if (clickedButton === "scary-movies") {
-		var randomScaryMovie = scaryMovies[Math.floor(Math.random() * scaryMovies.length)];
-		getMovie(randomScaryMovie);
+		var randomMovie = scaryMovies[Math.floor(Math.random() * scaryMovies.length)];
 	} else if (clickedButton === "comedy-movies") {
-		var randomComedyMovie = comedyMovies[Math.floor(Math.random() * comedyMovies.length)];
-		getMovie(randomComedyMovie);
+		var randomMovie = comedyMovies[Math.floor(Math.random() * comedyMovies.length)];
 	} else if (clickedButton === "romance-movies") {
-		var randomRomanceMovie = romanceMovies[Math.floor(Math.random() * romanceMovies.length)];
-		getMovie(randomRomanceMovie);
+		var randomMovie = romanceMovies[Math.floor(Math.random() * romanceMovies.length)];
 	} else if (clickedButton === "action-movies") {
-		var randomActionMovie = actionMovies[Math.floor(Math.random() * actionMovies.length)];
-		getMovie(randomActionMovie);
+		var randomMovie = actionMovies[Math.floor(Math.random() * actionMovies.length)];
 	}
+	getMovie(randomMovie);
+	localStorage.setItem(randomMovie,randomMovie);
+	searchHistory();
 };
+
+let searchHistory = function () {
+	let values = [], keys = Object.keys(localStorage).sort(), i = keys.length;
+    while (i--) { values.push( localStorage.getItem(keys[i]) ); }
+    let ul =  document.getElementsByTagName("ul")[0];
+    //to prevent logging previous searched cities
+    ul.innerHTML="";
+	searchHistoryEl.textContent = "Movie Search History:";
+    for (i = 0; i<values.length; i++){
+    let li = document.createElement("li");
+    li.textContent = values[i];
+    ul.prepend(li);
+    //gives the list items an attribute so it can be clicked on and will display the city weather again when buttonClickHandler() is called
+    li.setAttribute("id", values[i]);
+    }
+}
+searchHistory();
 
 let getMovie = function (movie) {
 	console.log(movie);
@@ -155,7 +171,6 @@ let getMovie = function (movie) {
 			<p class = "awards"><b><i class = "fas fa-award"></i></b>${data.Awards}</p>
 		</div>
 		`;
-		// resultGrid.className = "show-results";
 
     });
     } else {
@@ -165,21 +180,23 @@ let getMovie = function (movie) {
 };
 
 let getStream = function (imdbID) {
-	console.log(imdbID);
 	let streamURL = "https://api.watchmode.com/v1/title/" + imdbID + "/sources/?apiKey=" + watchModeAPIKey;
 
 	fetch(streamURL).then(function (response) {
     if (response.ok) {
-		console.log(response);
 		response.json().then(function (data) {
-        console.log(data);
         var streamName = data[0].name;
         var streamPrice = data[0].price;
         var streamType = data[0].type;
         var streamUrl = data[0].web_url;
         document.getElementById("sname").innerHTML = "Streaming Service: " + streamName;
-        document.getElementById("sprice").innerHTML = "Price: $" + streamPrice;
-        document.getElementById("stype").innerHTML = "Rent or Buy: " + streamType;
+        if (!streamPrice){
+			document.getElementById("sprice").innerHTML = "Price not available"; 
+		}
+		else {
+			document.getElementById("sprice").innerHTML = "Price: $" + streamPrice;
+		}
+        document.getElementById("stype").innerHTML = "How to Stream: " + streamType;
         document.getElementById("surl").innerHTML = "Streaming Website: " + streamUrl;
         document.getElementById("surl").innerHTML = `Streaming Website:  <a href=${streamUrl}>${streamUrl}</a>`;
         streamResultsEl.className = "show-results";
@@ -189,8 +206,14 @@ let getStream = function (imdbID) {
     }
 	});
 };
+
+let getClickedSearchHistory = function(event) {
+	let clickedSearhHistory = event.target.getAttribute('id');
+	getMovie(clickedSearhHistory);
+}
 //event listeners
 buttonsEl.addEventListener("click", buttonClickHandler);
+searchHistoryList.addEventListener("click", getClickedSearchHistory);
 
 // geting movie details from API through the search box
 const movieSearchBox = document.getElementById("movie-search-box");
@@ -222,6 +245,7 @@ function displayMovieList(movies) {
 		let movieListItem = document.createElement("div");
 		movieListItem.dataset.id = movies[idx].imdbID; // setting movie id in  data-id
 		movieListItem.classList.add("search-list-item");
+		
     if (movies[idx].Poster != "N/A") moviePoster = movies[idx].Poster;
     else moviePoster = "image_not_found.png";
 
@@ -243,18 +267,18 @@ function loadMovieDetails() {
 	const searchListMovies = searchList.querySelectorAll(".search-list-item");
 	searchListMovies.forEach((movie) => {
     movie.addEventListener("click", async () => {
-      // console.log(movie.dataset.id);
     searchList.classList.add("hide-search-list");
     movieSearchBox.value = "";wrapper
     const result = await fetch(`http://www.omdbapi.com/?i=${movie.dataset.id}&apikey=fc1fef96`);
     const movieDetails = await result.json();
-      // console.log(movieDetails);
     displayMovieDetails(movieDetails);
     });
 	});
 }
 
 function displayMovieDetails(details) {
+	const imdbID = details.imdbID;
+	getStream(imdbID);
 	resultGrid.innerHTML = `
     <div class = "movie-poster">
         <img src = "${details.Poster != "N/A" ? details.Poster : "image_not_found.png"}" alt = "movie poster">
