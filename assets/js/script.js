@@ -126,14 +126,14 @@ let searchHistory = function () {
 	let values = [], keys = Object.keys(localStorage).sort(), i = keys.length;
     while (i--) { values.push( localStorage.getItem(keys[i]) ); }
     let ul =  document.getElementsByTagName("ul")[0];
-    //to prevent logging previous searched cities
+    //to prevent logging previous searched movies
     ul.innerHTML="";
 	searchHistoryEl.textContent = "Movie Search History:";
     for (i = 0; i<values.length; i++){
     let li = document.createElement("li");
     li.textContent = values[i];
     ul.prepend(li);
-    //gives the list items an attribute so it can be clicked on and will display the city weather again when buttonClickHandler() is called
+    //gives the list items an attribute so it can be clicked on and will display the movie details again when buttonClickHandler() is called
     li.setAttribute("id", values[i]);
     }
 }
@@ -189,16 +189,16 @@ let getStream = function (imdbID) {
         var streamPrice = data[0].price;
         var streamType = data[0].type;
         var streamUrl = data[0].web_url;
-        document.getElementById("sname").innerHTML = "Streaming Service: " + streamName;
+        document.getElementById("sname").innerHTML = `<span>Streaming Service:</span> ${streamName}`;
         if (!streamPrice){
-			document.getElementById("sprice").innerHTML = "Price not available"; 
+			document.getElementById("sprice").innerHTML = `<span>Price not available</span>`; 
 		}
 		else {
-			document.getElementById("sprice").innerHTML = "Price: $" + streamPrice;
+			document.getElementById("sprice").innerHTML = `<span>Price:</span> $${streamPrice}`;
 		}
-        document.getElementById("stype").innerHTML = "How to Stream: " + streamType;
-        document.getElementById("surl").innerHTML = "Streaming Website: " + streamUrl;
-        document.getElementById("surl").innerHTML = `Streaming Website:  <a href=${streamUrl}>${streamUrl}</a>`;
+        document.getElementById("stype").innerHTML = `<span>How to Stream:</span> ${streamType}`;
+        document.getElementById("surl").innerHTML = `<span>Streaming Website:</span> ${streamUrl}`;
+        document.getElementById("surl").innerHTML = `<span>Streaming Website:</span>  <a href=${streamUrl}>${streamUrl}</a>`;
         streamResultsEl.className = "show-results";
 	});
     } else {
