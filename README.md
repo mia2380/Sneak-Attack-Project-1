@@ -1,7 +1,7 @@
 # Movie Mania
 
 ## To Do & Bug Fixes
-1. change alerts to modals (Taylor - outstanding, need help)
+1. change alerts to modals (Bronson - done)
 2. Add local storage (Taylor - partially done, need Brenda's help)
 3. Price coming back as null - need to write a rule so it doesn't (Taylor - done)
 4. need to add the getStream() function to work with the movie search (Taylor - done)
