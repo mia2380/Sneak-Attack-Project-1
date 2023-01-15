@@ -155,6 +155,7 @@ section {
 
 footer {
   background-color: var(--black);
+  color: white;
 }
 
 .search-container {

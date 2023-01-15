@@ -1,4 +1,4 @@
-var watchModeAPIKey = "cyPS2JJNj27Fr0x0pSjOTODxN6dTVevI4RLztRvb";
+var watchModeAPIKey = "kz5MfbHhvGeO63uJKs1zv4Rmnsc1ZhxUnaXubqci";
 var OMDbAPIKey = "2f57da20";
 var buttonsEl = document.querySelector("#search-section");
 var bookMoviesEl = document.querySelector("#book-movies");
