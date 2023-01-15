@@ -1,5 +1,16 @@
 # Movie Mania
 
+## To Do & Bug Fixes
+1. change alerts to modals (Taylor)
+2. Add local storage (Taylor)
+3. Price coming back as null - need to write a rule so it doesn't (Taylor)
+4. need to add the getStream() function to work with the movie search (Taylor)
+5. Need to format the results from the streaming (Erin will do once the APIs call again)
+6. Awards icons not showing (Brenda! Help!!!)
+7. Double check spelling for Romance and Action movies (rest have been done) (Taylor)
+8. update readme with new project info (We can work as a group on Wednesday)
+
+
 ## Project Description/User Story: 
 
 GIVEN a user wants to adopt a cat or dog
@@ -12,16 +23,6 @@ THEN they are presented with a nearby adoption with an item to purchase for said
 
 ## Wire Frame
 ![WireFrame/A user clicks on different pets and available pets and products show on the screen.](./assets/images/wireframe.png)
-
-## To Do & Bug Fixes
-1. change alerts to modals (Taylor)
-2. Add local storage (Taylor)
-3. Price coming back as null - need to write a rule so it doesn't (Taylor)
-4. need to add the getStream() function to work with the movie search (Taylor)
-5. Need to format the results from the streaming (Erin will do once the APIs call again)
-6. Awards icons not showing (Brenda! Help!!!)
-7. Double check spelling for Romance and Action movies (rest have been done) (Taylor)
-8. update readme with new project info (We can work as a group on Wednesday)
 
 
 ## Task List
