@@ -188,6 +188,10 @@ footer {
   border-radius: 5px;
 }
 
+.search-container h2 {
+  padding-right: 30px;
+}
+
 .search-element {
   display: -webkit-box;
   display: -ms-flexbox;
