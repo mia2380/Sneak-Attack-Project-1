@@ -118,24 +118,24 @@ let buttonClickHandler = function (event) {
 		var randomMovie = actionMovies[Math.floor(Math.random() * actionMovies.length)];
 	}
 	getMovie(randomMovie);
-	localStorage.setItem(randomMovie,randomMovie);
+	localStorage.setItem(randomMovie, randomMovie);
 	searchHistory();
 };
 
 let searchHistory = function () {
 	let values = [], keys = Object.keys(localStorage).sort(), i = keys.length;
-    while (i--) { values.push( localStorage.getItem(keys[i]) ); }
-    let ul =  document.getElementsByTagName("ul")[0];
-    //to prevent logging previous searched movies
-    ul.innerHTML="";
+	while (i--) { values.push(localStorage.getItem(keys[i])); }
+	let ul = document.getElementsByTagName("ul")[0];
+	//to prevent logging previous searched movies
+	ul.innerHTML = "";
 	searchHistoryEl.textContent = "Movie Search History:";
-    for (i = 0; i<values.length; i++){
-    let li = document.createElement("li");
-    li.textContent = values[i];
-    ul.prepend(li);
-    //gives the list items an attribute so it can be clicked on and will display the movie details again when buttonClickHandler() is called
-    li.setAttribute("id", values[i]);
-    }
+	for (i = 0; i < values.length; i++) {
+		let li = document.createElement("li");
+		li.textContent = values[i];
+		ul.prepend(li);
+		//gives the list items an attribute so it can be clicked on and will display the movie details again when buttonClickHandler() is called
+		li.setAttribute("id", values[i]);
+	}
 }
 searchHistory();
 
@@ -144,15 +144,15 @@ let getMovie = function (movie) {
 	var queryURL = "http://www.omdbapi.com/?apikey=a454390f&page=2&type=movie&t=" + movie;
 
 	fetch(queryURL).then(function (response) {
-    if (response.ok) {
-    console.log(response);
-    response.json().then(function (data) {
-        console.log(data);
-        var imdbID = data.imdbID;
-        console.log(imdbID);
-        getStream(imdbID);
+		if (response.ok) {
+			console.log(response);
+			response.json().then(function (data) {
+				console.log(data);
+				var imdbID = data.imdbID;
+				console.log(imdbID);
+				getStream(imdbID);
 
-		resultGrid.innerHTML = `
+				resultGrid.innerHTML = `
 		<div class = "movie-poster">
 			<img src = "${data.Poster != "N/A" ? data.Poster : "image_not_found.png"}" alt = "movie poster">
 		</div>
@@ -172,15 +172,15 @@ let getMovie = function (movie) {
 		</div>
 		`;
 
-    });
-    } else  {
-				let modal = document.getElementById("errorModal");
-		let errorModalText = document.getElementById("errorModalText");
-		if(errorModalText){
-			errorModalText.textContent = "Error, please try again." + response.statusText;
-			modal.style.display = "block";
+			});
+		} else {
+			let modal = document.getElementById("errorModal");
+			let errorModalText = document.getElementById("errorModalText");
+			if (errorModalText) {
+				errorModalText.textContent = "Error, please try again." + response.statusText;
+				modal.style.display = "block";
+			}
 		}
-	}
 	});
 };
 
@@ -188,36 +188,36 @@ let getStream = function (imdbID) {
 	let streamURL = "https://api.watchmode.com/v1/title/" + imdbID + "/sources/?apiKey=" + watchModeAPIKey;
 
 	fetch(streamURL).then(function (response) {
-    if (response.ok) {
-		response.json().then(function (data) {
-        var streamName = data[0].name;
-        var streamPrice = data[0].price;
-        var streamType = data[0].type;
-        var streamUrl = data[0].web_url;
-        document.getElementById("sname").innerHTML = `<span>Streaming Service:</span> ${streamName}`;
-        if (!streamPrice){
-			document.getElementById("sprice").innerHTML = `<span>Price not available</span>`; 
-		}
-		else {
-			document.getElementById("sprice").innerHTML = `<span>Price:</span> $${streamPrice}`;
-		}
-        document.getElementById("stype").innerHTML = `<span>How to Stream:</span> ${streamType}`;
-        document.getElementById("surl").innerHTML = `<span>Streaming Website:</span> ${streamUrl}`;
-        document.getElementById("surl").innerHTML = `<span>Streaming Website:</span>  <a href=${streamUrl}>${streamUrl}</a>`;
-        streamResultsEl.className = "show-results";
-});
-    } else {
+		if (response.ok) {
+			response.json().then(function (data) {
+				var streamName = data[0].name;
+				var streamPrice = data[0].price;
+				var streamType = data[0].type;
+				var streamUrl = data[0].web_url;
+				document.getElementById("sname").innerHTML = `<span>Streaming Service:</span> ${streamName}`;
+				if (!streamPrice) {
+					document.getElementById("sprice").innerHTML = `<span>Price not available</span>`;
+				}
+				else {
+					document.getElementById("sprice").innerHTML = `<span>Price:</span> $${streamPrice}`;
+				}
+				document.getElementById("stype").innerHTML = `<span>How to Stream:</span> ${streamType}`;
+				document.getElementById("surl").innerHTML = `<span>Streaming Website:</span> ${streamUrl}`;
+				document.getElementById("surl").innerHTML = `<span>Streaming Website:</span>  <a href=${streamUrl}>${streamUrl}</a>`;
+				streamResultsEl.className = "show-results";
+			});
+		} else {
 			let modal = document.getElementById("errorModal");
-  let errorModalText = document.getElementById("errorModalText");
-  if(errorModalText){
-    errorModalText.textContent = "Error, please try again." + response.statusText;
-    modal.style.display = "block";
-  }
-}
+			let errorModalText = document.getElementById("errorModalText");
+			if (errorModalText) {
+				errorModalText.textContent = "Error, please try again." + response.statusText;
+				modal.style.display = "block";
+			}
+		}
 	});
 };
 
-let getClickedSearchHistory = function(event) {
+let getClickedSearchHistory = function (event) {
 	let clickedSearhHistory = event.target.getAttribute('id');
 	getMovie(clickedSearhHistory);
 }
@@ -235,7 +235,7 @@ async function loadMovies(searchTerm) {
 	const URL = `https://omdbapi.com/?s=${searchTerm}&page=1&apikey=fc1fef96`;
 	const res = await fetch(`${URL}`);
 	const data = await res.json();
-  // console.log(data.Search);
+	// console.log(data.Search);
 	if (data.Response == "True") displayMovieList(data.Search);
 }
 
@@ -245,7 +245,7 @@ function findMovies() {
 		searchList.classList.remove("hide-search-list");
 		loadMovies(searchTerm);
 	} else {
-    searchList.classList.add("hide-search-list");
+		searchList.classList.add("hide-search-list");
 	}
 }
 
@@ -255,11 +255,11 @@ function displayMovieList(movies) {
 		let movieListItem = document.createElement("div");
 		movieListItem.dataset.id = movies[idx].imdbID; // setting movie id in  data-id
 		movieListItem.classList.add("search-list-item");
-		
-    if (movies[idx].Poster != "N/A") moviePoster = movies[idx].Poster;
-    else moviePoster = "image_not_found.png";
 
-    movieListItem.innerHTML = `
+		if (movies[idx].Poster != "N/A") moviePoster = movies[idx].Poster;
+		else moviePoster = "image_not_found.png";
+
+		movieListItem.innerHTML = `
         <div class = "search-item-thumbnail">
             <img src = "${moviePoster}">
         </div>
@@ -268,7 +268,7 @@ function displayMovieList(movies) {
             <p>${movies[idx].Year}</p>
         </div>
         `;
-    searchList.appendChild(movieListItem);
+		searchList.appendChild(movieListItem);
 	}
 	loadMovieDetails();
 }
@@ -276,13 +276,13 @@ function displayMovieList(movies) {
 function loadMovieDetails() {
 	const searchListMovies = searchList.querySelectorAll(".search-list-item");
 	searchListMovies.forEach((movie) => {
-    movie.addEventListener("click", async () => {
-    searchList.classList.add("hide-search-list");
-    movieSearchBox.value = "";wrapper
-    const result = await fetch(`http://www.omdbapi.com/?i=${movie.dataset.id}&apikey=fc1fef96`);
-    const movieDetails = await result.json();
-    displayMovieDetails(movieDetails);
-    });
+		movie.addEventListener("click", async () => {
+			searchList.classList.add("hide-search-list");
+			movieSearchBox.value = ""; wrapper
+			const result = await fetch(`http://www.omdbapi.com/?i=${movie.dataset.id}&apikey=fc1fef96`);
+			const movieDetails = await result.json();
+			displayMovieDetails(movieDetails);
+		});
 	});
 }
 
@@ -294,27 +294,27 @@ function displayMovieDetails(details) {
         <img src = "${details.Poster != "N/A" ? details.Poster : "image_not_found.png"}" alt = "movie poster">
     </div>
     <div class = "movie-info">
-        <h3 class = "movie-title">${details.Title}</h3>
+        <h3 class = "movie-title"> ${details.Title}</h3>
         <ul class = "movie-misc-info">
-            <li class = "year">Year: ${details.Year}</li>
+            <li class = "year"><b>Year:</b> ${details.Year}</li>
             <li class = "rated">Ratings: ${details.Rated}</li>
-            <li class = "released">Released: ${details.Released}</li>
+            <li class = "released"><b>Released:</b> ${details.Released}</li>
         </ul>
         <p class = "genre"><b>Genre:</b> ${details.Genre}</p>
         <p class = "writer"><b>Writer:</b> ${details.Writer}</p>
-        <p class = "actors"><b>Actors: </b>${details.Actors}</p>
+        <p class = "actors"><b>Actors:</b> ${details.Actors}</p>
         <p class = "plot"><b>Plot:</b> ${details.Plot}</p>
         <p class = "language"><b>Language:</b> ${details.Language}</p>
-        <p class = "awards"><b><i class = "fas fa-award"></i></b>${details.Awards}</p>
+        <p class = "awards"><b><i class = "fas fa-award"></i></b> ${details.Awards}</p>
     </div>
     `;
 
 }
 
 let closeModal = document.getElementsByClassName("close")[0];
-closeModal.onclick = function() {
-    let modal = document.getElementById("errorModal");
-    modal.style.display = "none";
+closeModal.onclick = function () {
+	let modal = document.getElementById("errorModal");
+	modal.style.display = "none";
 };
 
 window.addEventListener("click", (event) => {
