@@ -13,16 +13,18 @@
 
 ## Project Description/User Story: 
 
-GIVEN a user wants to adopt a cat or dog
-WHEN a searches for a pet on our site
-THEN they are presented with a nearby adoption with an item to purchase for said animal
+GIVEN a user wants to choose a movie to watch
+WHEN a search for a film is executed on our site
+THEN they are presented with a random film by genre and it's streaming availability
+
+The project will also save the search history of the user as well as present general information regarding the film with a movie poster.
 
 ## API's:
-    -Petfinder
-    -Amazon
+    -OMDb
+    -WatchMode
 
 ## Wire Frame
-![WireFrame/A user clicks on different pets and available pets and products show on the screen.](./assets/images/wireframe.png)
+![OUTDATED: WireFrame/A user clicks on different pets and available pets and products show on the screen.](./assets/images/wireframe.png)
 
 
 ## Task List
