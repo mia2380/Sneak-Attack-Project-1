@@ -13,31 +13,47 @@
 
 <body>
   <header id="wrapper" class="center-aligned">
-    </div id="doggie">
-    <img src="./assets/images/movie-theater-dog.PNG" height="300px" />
+    <div id="doggie">
+      <img src="./assets/images/logo.png" height="300px" />
     </div>
-    <h1 class="movieTitle">Movie Mania</h1>
+
+    <div class="search-container">
+      <div class="search-element">
+        <h2>Search:</h2>
+        <input type="text" class="form-control" placeholder="Search Movie Title ..." id="movie-search-box"
+          onkeyup="findMovies()" onclick="findMovies()">
+
+        <div class="search-list" id="search-list">
+          <!-- list here -->
+          <!-- <div class = "search-list-item"> -->
+        </div>
+      </div>
+    </div>
+    <!-- end of search container -->
+
   </header>
+
   <main>
     <aside class="side-container">
       <!-- search container -->
-      <div class="search-container">
+      <!--<div class="search-container">
         <div class="search-element">
           <h2>Search:</h2>
           <input type="text" class="form-control" placeholder="Search Movie Title ..." id="movie-search-box"
             onkeyup="findMovies()" onclick="findMovies()">
 
           <div class="search-list" id="search-list">
-            <!-- list here -->
-            <!-- <div class = "search-list-item"> -->
-          </div>
-        </div>
-      </div>
+            list here -->
+      <!-- <div class = "search-list-item"> -->
+      <!-- </div> -->
+      <!-- </div> -->
+      <!-- </div> -->
       <!-- end of search container -->
       <div class="side">
         <section id="search-section" class="mb-2">
           <h2>
             <p>Don't know which movie you want to watch?</p>
+            <br>
             <p>Pick a genre and we'll pick a movie for you:</p>
           </h2>
           <button class="btn" id="book-movies">Movies you can watch instead of read</button>
