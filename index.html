@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Movie Mania|Netflix & Chill, or Hulu and Hang?</title>
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap" rel="stylesheet"/>
-    <link rel="stylesheet" href="./assets/css/style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Mania|Netflix & Chill, or Hulu and Hang?</title>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/style.css" />
+  <script src="https://kit.fontawesome.com/337be747ec.js" crossorigin="anonymous"></script>
+</head>
 
-  <body>
-    <header id="wrapper" class="center-aligned">
-      </div id="doggie">
-        <img src="./assets/images/movie-theater-dog.PNG" height="300px"/>
-      </div>
-        <h1 class="movieTitle">Movie Mania</h1>
-    </header>
+<body>
+  <header id="wrapper" class="center-aligned">
+    </div id="doggie">
+    <img src="./assets/images/movie-theater-dog.PNG" height="300px" />
+    </div>
+    <h1 class="movieTitle">Movie Mania</h1>
+  </header>
   <main>
     <aside class="side-container">
-<!-- search container -->
-        <div class="search-container">
+      <!-- search container -->
+      <div class="search-container">
         <div class="search-element">
           <h2>Search:</h2>
           <input type="text" class="form-control" placeholder="Search Movie Title ..." id="movie-search-box"
             onkeyup="findMovies()" onclick="findMovies()">
-  
+
           <div class="search-list" id="search-list">
             <!-- list here -->
             <!-- <div class = "search-list-item"> -->
@@ -34,53 +36,56 @@
       <!-- end of search container -->
       <div class="side">
         <section id="search-section" class="mb-2">
-          <h2><p>Don't know which movie you want to watch?</p>
-            <p>Pick a genre and we'll pick a movie for you:</p></h2>
-          <button class="btn" id = "book-movies">Movies you can watch instead of read</button>
-          <button class="btn" id = "sad-movies">Movies that will make you cry</button>
-          <button class="btn" id = "scary-movies">Movies that will make you sleep with the lights on</button>
-          <button class="btn" id = "comedy-movies">Movies that will make you laugh</button>
-          <button class="btn" id = "romance-movies">Movies that will make you fall in love</button>
-          <button class="btn" id = "action-movies">Movies that will make you want to do parkour and/or punch people</button>
+          <h2>
+            <p>Don't know which movie you want to watch?</p>
+            <p>Pick a genre and we'll pick a movie for you:</p>
+          </h2>
+          <button class="btn" id="book-movies">Movies you can watch instead of read</button>
+          <button class="btn" id="sad-movies">Movies that will make you cry</button>
+          <button class="btn" id="scary-movies">Movies that will make you sleep with the lights on</button>
+          <button class="btn" id="comedy-movies">Movies that will make you laugh</button>
+          <button class="btn" id="romance-movies">Movies that will make you fall in love</button>
+          <button class="btn" id="action-movies">Movies that will make you want to do parkour and/or punch
+            people</button>
         </section>
       </div>
 
-        <!--movie history-->
-        <div class = "search-history">
-          <h2 id="search-history-header"></h2>
-          <ul class="movie-history" id="show-movie"></ul>
-        </div>
+      <!--movie history-->
+      <div class="search-history">
+        <h2 id="search-history-header"></h2>
+        <ul class="movie-history" id="show-movie"></ul>
+      </div>
     </aside>
     <!--end of aside-->
-    <section class = "results-container">
-      <div class = "movie-results">
-      <h2><span id="result-text"></span></h2>
+    <section class="results-container">
+      <div class="movie-results">
+        <h2><span id="result-text"></span></h2>
       </div>
-    <!-- result container -->
-    <div class="container">
-      <div class="result-container">
-        <div class="result-grid" id="result-grid">
-          <!-- movie information here -->
-          <!-- <div class = "movie-poster"> -->
+      <!-- result container -->
+      <div class="container">
+        <div class="result-container">
+          <div class="result-grid" id="result-grid">
+            <!-- movie information here -->
+            <!-- <div class = "movie-poster"> -->
+          </div>
         </div>
-      </div>
-      <div class="stream-results" id="stream-container">
-        <h2>Where to Stream: <span id="result-stream"></span></h2>
+        <div class="stream-results" id="stream-container">
+          <h2>Where to Stream: <span id="result-stream"></span></h2>
           <div id="result-stream-content">
             <p id="sname"></p>
             <p id="sprice"></p>
             <p id="stype"></p>
             <p id="surl"></p>
           </div>
+        </div>
       </div>
-    </div>
-    <div id="errorModal" class="modal">
-      <div class="modal-content">
-        <span class="close">&times;</span>
-        <p id="errorModalText"></p>
+      <div id="errorModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p id="errorModalText"></p>
+        </div>
       </div>
-    </div>
-    <!-- end of result container -->
+      <!-- end of result container -->
     </section>
   </main>
   <footer>
