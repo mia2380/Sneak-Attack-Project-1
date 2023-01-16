@@ -2,7 +2,7 @@
 
 ## To Do & Bug Fixes
 1. change alerts to modals (Bronson - done)
-2. Add local storage (Taylor - partially done, need Brenda's help)
+2. Add local storage (Taylor -done - we will keep it just for random movie selected history)
 3. Price coming back as null - need to write a rule so it doesn't (Taylor - done)
 4. need to add the getStream() function to work with the movie search (Taylor - done)
 5. Need to format the results from the streaming (Erin = done)
