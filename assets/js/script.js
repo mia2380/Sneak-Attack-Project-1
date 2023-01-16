@@ -128,7 +128,7 @@ let searchHistory = function () {
     let ul =  document.getElementsByTagName("ul")[0];
     //to prevent logging previous searched movies
     ul.innerHTML="";
-	searchHistoryEl.textContent = "Movie Search History:";
+	searchHistoryEl.textContent = "Random Movie History:";
     for (i = 0; i<values.length; i++){
     let li = document.createElement("li");
     li.textContent = values[i];
