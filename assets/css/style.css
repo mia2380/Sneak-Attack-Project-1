@@ -31,6 +31,10 @@ body {
   font-weight: 400;
 }
 
+body {
+  background-color: black;
+}
+
 /* header and dog logo */
 header {
   height: 15vh;
@@ -158,6 +162,7 @@ section {
 footer {
   background-color: var(--black);
   color: white;
+  margin-top: 75px;
 }
 
 .search-container {
