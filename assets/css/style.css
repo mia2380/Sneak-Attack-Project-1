@@ -213,6 +213,10 @@ footer {
   margin-bottom: 1.5rem;
 }
 
+.search-element p{
+  color: white;
+}
+
 .search-element .form-control {
   /* padding: 1rem 2rem; */
   font-size: 1.4rem;
