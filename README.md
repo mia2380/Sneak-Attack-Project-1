@@ -6,7 +6,7 @@
 3. Price coming back as null - need to write a rule so it doesn't (Taylor - done)
 4. need to add the getStream() function to work with the movie search (Taylor - done)
 5. Need to format the results from the streaming (Erin = done)
-6. Awards icons not showing (Brenda! Help!!!)
+6. Awards icons not showing (Brenda - done!)
 7. Double check spelling for Romance and Action movies (rest have been done) (Taylor - done)
 8. update readme with new project info (We can work as a group on Wednesday)
 
