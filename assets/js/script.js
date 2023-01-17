@@ -142,7 +142,7 @@ searchHistory();
 
 let getMovie = function (movie) {
 	console.log(movie);
-	var queryURL = "http://www.omdbapi.com/?apikey=a454390f&page=2&type=movie&t=" + movie;
+	var queryURL = "https://www.omdbapi.com/?apikey=a454390f&page=2&type=movie&t=" + movie;
 
 	fetch(queryURL).then(function (response) {
 		if (response.ok) {
