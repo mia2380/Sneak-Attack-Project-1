@@ -33,7 +33,7 @@ body {
 
 /* header and dog logo */
 header {
-  height: 12vh;
+  height: 15vh;
   background: var(--light-dark-color);
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@ header {
   display: flex;
   align-items: center;
   justify-content: left;
-  margin-top: 15px;
+  margin-top: 50px;
 }
 
 a:link {
