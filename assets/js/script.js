@@ -1,5 +1,6 @@
 const watchModeAPIKey = "kz5MfbHhvGeO63uJKs1zv4Rmnsc1ZhxUnaXubqci";
-const OMDbAPIKey = "2f57da20";
+// const OMDbAPIKey = "2f57da20";
+const OMDbAPIKey = "1b466f0a";
 const buttonsEl = document.querySelector("#search-section");
 const bookMoviesEl = document.querySelector("#book-movies");
 const sadMoviesEl = document.querySelector("#sad-movies");
