@@ -1,6 +1,6 @@
 # Movie 
 
-![Movie Mania Title](./assets/images/small-logo.png)
+![Movie Mania Title](./assets/images/small-logo.PNG)
 
 ## Links
 
