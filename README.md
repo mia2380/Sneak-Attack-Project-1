@@ -17,7 +17,7 @@ GIVEN a user wants to choose a movie to watch
 WHEN a search for a film is executed on our site
 THEN they are presented with a random film by genre and it's streaming availability
 
-The project will also save the search history of the user as well as present general information regarding the film with a movie poster.
+Our project  allows a user to pick a movie to watch by pulling data from two different API's. Users are first able to search for a movie by name. If they select a film it will pull general information, a poster, and the streaming location for the movie. The site will also save the search history of the user. If the user doesn't want know what to watch, they can choose from a number of random movie generators by genre.
 
 ## API's:
     -OMDb
