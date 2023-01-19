@@ -1,4 +1,4 @@
-# Movie 
+# Movie Mania
 
 ![Movie Mania Title](./assets/images/small-logo.PNG)
 
