@@ -1,54 +1,27 @@
 # Movie Mania
 
-## To Do & Bug Fixes
-1. change alerts to modals (Bronson - done)
-2. Add local storage (Taylor - partially done, need Brenda's help)
-3. Price coming back as null - need to write a rule so it doesn't (Taylor - done)
-4. need to add the getStream() function to work with the movie search (Taylor - done)
-5. Need to format the results from the streaming (Erin = done)
-6. Awards icons not showing (Brenda! Help!!!)
-7. Double check spelling for Romance and Action movies (rest have been done) (Taylor - done)
-8. update readme with new project info (We can work as a group on Wednesday)
+![Movie Mania Title](./assets/images/small-logo.PNG)
+
+## Links
+
+* Deployed Website: https://mia2380.github.io/Sneak-Attack-Project-1/
+
+* Repo: https://github.com/mia2380/Sneak-Attack-Project-1
+
 
 
 ## Project Description/User Story: 
 
-GIVEN a user wants to adopt a cat or dog
-WHEN a searches for a pet on our site
-THEN they are presented with a nearby adoption with an item to purchase for said animal
+GIVEN a user wants to find a movie to watch and where to watch it
+WHEN a search for a film is executed on our site
+THEN they are presented with a random film by genre and its streaming availability
 
-## API's:
-    -Petfinder
-    -Amazon
+Our project  allows a user to pick a movie to watch by pulling data from two different APIs. Users are first able to search for a movie by name. If they select a film, it will pull general information, a poster, and the streaming location for the movie. If the user doesn't want know what to watch, they can choose from a number of random movie generators by genre. The site will save randomly generated movies to a Movie Search History. Users can click on a movie in the movie search history to pull up the details from that movie again.
 
-## Wire Frame
-![WireFrame/A user clicks on different pets and available pets and products show on the screen.](./assets/images/wireframe.png)
+## APIs:
+    OMDb: https://www.omdbapi.com/
+    WatchMode: https://api.watchmode.com/
 
+## Screenshot 
+![Screenshot of movie mania website.](./assets/images/screenshot-moviemania.PNG)
 
-## Task List
-
-## HTML
-    - choose what movies go into each category
-
-## CSS
-    -what font do we want to use?
-    -whats our color scheme?
-    -do we want to add pseudo codes for the links/hovering\
-    - style the buttons
-
-
-## JavaScript
-    - choose what movies go into each category
-    - add in some loops
-    - and if statements
-    - add in search parameter for location
-    - implement Fetch API
-    - and more magic
-
-
-## APIs
-    - call to API - see if you can get a response from it
-    - see if you get CORS error
-    - what errors do we get?
-    - link api to amazon
-    -link api to pet finder
