@@ -15,6 +15,7 @@ const resultGrid = document.getElementById("result-grid");
 const searchHistoryEl = document.getElementById("search-history-header");
 const searchHistoryList = document.querySelector('#show-movie');
 
+//array for movies based on books - one of these movies will be generated when user selects book movies genre
 var bookMovies = [
 	"Dune",
 	"Harry Potter",
@@ -28,6 +29,7 @@ var bookMovies = [
 	"The Green Mile",
 	"The Princess Bride",
 ];
+//array for sad movies
 var sadMovies = [
 	"The Fault In Our Stars",
 	"Marley & Me",
@@ -41,6 +43,7 @@ var sadMovies = [
 	"Remember The Titans",
 	"Radio",
 ];
+//array for scary movies
 var scaryMovies = [
 	"The Conjuring",
 	"House of Wax",
@@ -53,6 +56,7 @@ var scaryMovies = [
 	"Hellraiser",
 	"The Skeleton Key",
 ];
+//array for comedies
 var comedyMovies = [
 	"Step Brothers",
 	"Bad Daddy",
@@ -69,7 +73,7 @@ var comedyMovies = [
 	"Office Space",
 	"Due Date",
 ];
-
+//array for romance
 var romanceMovies = [
 	"The Notebook",
 	"Pride & Prejudice",
@@ -85,6 +89,7 @@ var romanceMovies = [
 	"The Spectacular Now",
 	"Beauty and the Beast",
 ];
+//array for action
 var actionMovies = [
 	"Armageddon",
 	"Transformers",
@@ -118,11 +123,14 @@ let buttonClickHandler = function (event) {
 	} else if (clickedButton === "action-movies") {
 		var randomMovie = actionMovies[Math.floor(Math.random() * actionMovies.length)];
 	}
+	//feeding randomly generated movie into getMovie function
 	getMovie(randomMovie);
+	//save generated movie to local storage
 	localStorage.setItem(randomMovie, randomMovie);
 	searchHistory();
 };
 
+//storing randomly generated movie to Movie Search History section in HTML
 let searchHistory = function () {
 	let values = [], keys = Object.keys(localStorage).sort(), i = keys.length;
 	while (i--) { values.push(localStorage.getItem(keys[i])); }
@@ -140,6 +148,7 @@ let searchHistory = function () {
 }
 searchHistory();
 
+//pulling movie details from OMDB API
 let getMovie = function (movie) {
 	console.log(movie);
 	var queryURL = "https://www.omdbapi.com/?apikey=a454390f&page=2&type=movie&t=" + movie;
@@ -151,8 +160,10 @@ let getMovie = function (movie) {
 				console.log(data);
 				var imdbID = data.imdbID;
 				console.log(imdbID);
+				//calling getStream function to feed imdbID into watchmode API
 				getStream(imdbID);
 
+				//adding details from API as text to HTML
 				resultGrid.innerHTML = `
 		<div class = "movie-poster">
 			<img src = "${data.Poster != "N/A" ? data.Poster : "image_not_found.png"}" alt = "movie poster">
@@ -185,12 +196,14 @@ let getMovie = function (movie) {
 	});
 };
 
+//pulling streaming information from watchmode API
 let getStream = function (imdbID) {
 	let streamURL = "https://api.watchmode.com/v1/title/" + imdbID + "/sources/?apiKey=" + watchModeAPIKey;
 
 	fetch(streamURL).then(function (response) {
 		if (response.ok) {
 			response.json().then(function (data) {
+				//adding details from API as text in HTML
 				var streamName = data[0].name;
 				var streamPrice = data[0].price;
 				var streamType = data[0].type;
@@ -218,6 +231,7 @@ let getStream = function (imdbID) {
 	});
 };
 
+//when user clicks on movie from search history, show that movie's info
 let getClickedSearchHistory = function (event) {
 	let clickedSearhHistory = event.target.getAttribute('id');
 	getMovie(clickedSearhHistory);
@@ -240,6 +254,7 @@ async function loadMovies(searchTerm) {
 	if (data.Response == "True") displayMovieList(data.Search);
 }
 
+//if statement for whether or not search list should show in Search Bar
 function findMovies() {
 	let searchTerm = movieSearchBox.value.trim();
 	if (searchTerm.length > 0) {
@@ -250,6 +265,7 @@ function findMovies() {
 	}
 }
 
+//return list of possible movies from user searched text
 function displayMovieList(movies) {
 	searchList.innerHTML = "";
 	for (let idx = 0; idx < movies.length; idx++) {
@@ -274,6 +290,7 @@ function displayMovieList(movies) {
 	loadMovieDetails();
 }
 
+//event listener for user selected movie from Search Bar
 function loadMovieDetails() {
 	const searchListMovies = searchList.querySelectorAll(".search-list-item");
 	searchListMovies.forEach((movie) => {
@@ -287,6 +304,7 @@ function loadMovieDetails() {
 	});
 }
 
+//getting streaming information from watchmode API and movie information from OMDB API
 function displayMovieDetails(details) {
 	const imdbID = details.imdbID;
 	getStream(imdbID);
