@@ -8,18 +8,19 @@
   <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
     rel="stylesheet" />
   <link rel="stylesheet" href="./assets/css/style.css" />
+  <!-- framework -->
+  <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://kit.fontawesome.com/337be747ec.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
   <header id="wrapper" class="center-aligned">
-    <div id="doggie">
-      <img src="./assets/images/logo.png" height="600px" />
+    <div id="doggie" class="dogimg">
+      <img class="object-scale-down md:float-left" src="./assets/images/logo.png" alt="Movie-Mania Icon - Movies in your lap since 2003" />
     </div>
-
     <div class="search-container">
       <div class="search-element">
-        <h2>Search:</h2>
+        <h2 class="text-2xl text-white">Search:</h2>
         <input type="text" class="form-control" placeholder="Search Movie Title ..." id="movie-search-box"
           onkeyup="findMovies()" onclick="findMovies()">
 
@@ -37,24 +38,21 @@
     <aside class="side-container">
       <div class="side">
         <section id="search-section" class="mb-2">
-          <h2>
-            <p>Don't know which movie you want to watch?</p>
-            <br>
-            <p>Pick a genre and we'll pick a movie for you:</p>
-          </h2>
-          <button class="btn" id="book-movies">Movies you can watch instead of read</button>
-          <button class="btn" id="sad-movies">Movies that will make you cry</button>
-          <button class="btn" id="scary-movies">Movies that will make you sleep with the lights on</button>
-          <button class="btn" id="comedy-movies">Movies that will make you laugh</button>
-          <button class="btn" id="romance-movies">Movies that will make you fall in love</button>
-          <button class="btn" id="action-movies">Movies that will make you want to do parkour and/or punch
-            people</button>
+          <p class="text-xl">Don't know which movie you want to watch?</p>
+          <br>
+          <p class="text-xl">Pick a genre and we'll pick a movie for you:</p>
+          <button class="btn bg-red-800 hover:bg-red-600 hover:font-bold text-white text-lg" id="book-movies">Movies you can watch instead of read</button>
+          <button class="btn bg-red-800 hover:bg-red-600 hover:font-bold text-white text-lg" id="sad-movies">Movies that will make you cry</button>
+          <button class="btn bg-red-800 hover:bg-red-600 hover:font-bold text-white text-lg" id="scary-movies">Movies that will make you sleep with the lights on</button>
+          <button class="btn bg-red-800 hover:bg-red-600 hover:font-bold text-white text-lg" id="comedy-movies">Movies that will make you laugh</button>
+          <button class="btn bg-red-800 hover:bg-red-600 hover:font-bold text-white text-lg" id="romance-movies">Movies that will make you fall in love</button>
+          <button class="btn bg-red-800 hover:bg-red-600 hover:font-bold text-white text-lg" id="action-movies">Movies that will make you want to do parkour and/or punch people</button>
         </section>
       </div>
 
       <!--movie history-->
       <div class="search-history">
-        <h2 id="search-history-header"></h2>
+        <h2 class="text-xl" id="search-history-header"></h2>
         <ul class="movie-history" id="show-movie"></ul>
       </div>
     </aside>
